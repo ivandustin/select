@@ -1,0 +1,22 @@
+{
+    "name": "selectia",
+    "description": "Select words from collated manuscripts",
+    "version": "0.1.0",
+    "license": "GPL-3.0-or-later",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ivandustin/select"
+    },
+    "dependencies": {
+        "argparse": "^2.0.1",
+        "collatia": "^0.1.8",
+        "mocha": "^8.3.2"
+    },
+    "scripts": {
+        "test": "mocha"
+    },
+    "bin": {
+        "select": "index.js",
+        "selectia": "index.js"
+    }
+}
