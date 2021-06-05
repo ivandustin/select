@@ -1,6 +1,7 @@
 const assert          = require('assert')
 const collatia        = require('collatia')
 const minimum_witness = 2
+const max_deviation   = 0.2
 const empty           = ''
 
 function select(verses) {
@@ -56,8 +57,7 @@ function unique(array) {
 }
 
 function normalize(array) {
-    assert(array.length <= 96)
-    return array.map((value, index)=> value ? String.fromCharCode(index + 32) : 0).filter(identity).join(empty)
+    return array.map((value, index)=> value ? String.fromCharCode(index + 1) : 0).filter(identity).join(empty)
 }
 
 function exact(a, b) {
@@ -65,7 +65,11 @@ function exact(a, b) {
 }
 
 function same(a, b) {
-    return collatia.same(normalize(a), normalize(b))
+    return deviation(a, b) <= max_deviation
 }
 
-module.exports = { select, verse, word, normalize, same }
+function deviation(a, b) {
+    return collatia.deviation(normalize(a), normalize(b))
+}
+
+module.exports = { select, verse, word, normalize, deviation, same }
