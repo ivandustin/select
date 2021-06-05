@@ -16,7 +16,7 @@
         "test": "mocha"
     },
     "bin": {
-        "select": "index.js",
-        "selectia": "index.js"
+        "select": "main.js",
+        "selectia": "main.js"
     }
 }
