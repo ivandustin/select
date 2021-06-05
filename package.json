@@ -1,5 +1,5 @@
 {
-    "name": "selectia",
+    "name": "selectica",
     "description": "Select words from collated manuscripts",
     "version": "0.1.0",
     "license": "GPL-3.0-or-later",
@@ -17,6 +17,6 @@
     },
     "bin": {
         "select": "main.js",
-        "selectia": "main.js"
+        "selectica": "main.js"
     }
 }
