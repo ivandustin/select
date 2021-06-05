@@ -1,5 +1,5 @@
 const assert          = require('assert')
-const { same }        = require('collatia')
+const collatia        = require('collatia')
 const minimum_witness = 2
 const empty           = ''
 
@@ -14,19 +14,18 @@ function select(verses) {
 
 function verse(verses) {
     assert(verses.length > 0, 'Empty verses')
-    let normal = verses.map(normalize)
-    return general(verses, normal, same)
+    return general(verses, same)
 }
 
 function word(words) {
     assert(words.length > 0, 'Empty words')
-    return general(words, words, exact)
+    return general(words, exact)
 }
 
-function general(array, values, compare) {
+function general(array, compare) {
     let scores = array.map(function(value, index_a) {
         let score = array.filter(function(value, index_b) {
-            return compare(values[index_a], values[index_b])
+            return compare(array[index_a], array[index_b])
         }).length
         return score
     }).map(value => Math.min(value, minimum_witness))
@@ -57,11 +56,15 @@ function unique(array) {
 }
 
 function normalize(array) {
-    return array.map(value => value ? 1 : 0).join(empty)
+    return array.map((value, index)=> value ? String.fromCharCode(index + 32) : 0).filter(identity).join(empty)
 }
 
 function exact(a, b) {
     return a == b
 }
 
-module.exports = { select, verse, word }
+function same(a, b) {
+    return collatia.same(normalize(a), normalize(b))
+}
+
+module.exports = { select, verse, word, normalize, same }

@@ -51,14 +51,32 @@ describe('algorithm', function() {
 
         it('is correct', function() {
             let input = [
-                ['', 'B', 'C'],
-                ['A', '', ''],
-                ['A', '', ''],
+                ['A', '',  ''],
+                ['A', '',  ''],
+                ['A', 'B', 'C'],
                 ['A', 'B', 'C']
             ]
 
             let expected = [
-                ['A', '', '']
+                ['A', '',  ''],
+                ['A', 'B', 'C']
+            ]
+
+            assert.deepEqual(algorithm.verse(input), expected)
+        })
+
+        it('is correct', function() {
+            let input = [
+                ['A', '',  ''],
+                ['A', '',  ''],
+                ['A', 'B', 'C'],
+                ['',  'B', 'C']
+            ]
+
+            let expected = [
+                ['A', '',  ''],
+                ['A', 'B', 'C'],
+                ['',  'B', 'C']
             ]
 
             assert.deepEqual(algorithm.verse(input), expected)
