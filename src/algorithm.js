@@ -69,6 +69,7 @@ function same(a, b) {
 }
 
 function deviation(a, b) {
+    assert.equal(a.length, b.length)
     return collatia.deviation(normalize(a), normalize(b))
 }
 
