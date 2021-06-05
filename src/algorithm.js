@@ -56,6 +56,7 @@ function unique(array) {
 }
 
 function normalize(array) {
+    assert(array.length <= 96)
     return array.map((value, index)=> value ? String.fromCharCode(index + 32) : 0).filter(identity).join(empty)
 }
 
