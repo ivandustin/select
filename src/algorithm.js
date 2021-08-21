@@ -5,22 +5,12 @@ const max_deviation   = 0.2
 const empty           = ''
 
 function select(verses) {
-    return unique(verse(verses).map(function(verse) {
-        return verse.map(function(value, index) {
-            let words = verses.map(verse => verse[index]).filter(identity)
-            return value ? word(words) : [value]
-        })
-    }))
+    return unique(verse(verses))
 }
 
 function verse(verses) {
     assert(verses.length > 0, 'Empty verses')
     return general(verses, same)
-}
-
-function word(words) {
-    assert(words.length > 0, 'Empty words')
-    return general(words, exact)
 }
 
 function general(array, compare) {
@@ -73,4 +63,4 @@ function deviation(a, b) {
     return collatia.deviation(normalize(a), normalize(b))
 }
 
-module.exports = { select, verse, word, normalize, deviation, same }
+module.exports = { select, verse, normalize, deviation, same }
