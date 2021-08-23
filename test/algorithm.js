@@ -141,4 +141,39 @@ describe('algorithm', function() {
 
     })
 
+    describe('unique', function() {
+
+        it('is correct', function() {
+            let input = [
+                ['A', '', 'B', '', 'C'],
+                ['A', '', 'B', '', 'C'],
+                ['A', '', 'B', '', 'C']
+            ]
+
+            let expected = [
+                ['A', '', 'B', '', 'C']
+            ]
+
+            assert.deepEqual(algorithm.unique(input), expected)
+        })
+
+        it('is correct', function() {
+            let input = [
+                ['A', '', 'B', '', 'C'],
+                ['A', '', 'B', '', 'C'],
+                ['A', '', 'B', '', 'C'],
+                ['',  '', '',  '', ''],
+                ['',  '', '',  '', '']
+            ]
+
+            let expected = [
+                ['A', '', 'B', '', 'C'],
+                ['',  '', '',  '', '']
+            ]
+
+            assert.deepEqual(algorithm.unique(input), expected)
+        })
+
+    })
+
 })

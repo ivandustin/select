@@ -63,4 +63,4 @@ function deviation(a, b) {
     return collatia.deviation(normalize(a), normalize(b))
 }
 
-module.exports = { select, verse, normalize, deviation, same }
+module.exports = { select, verse, normalize, deviation, same, unique }
